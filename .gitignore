@@ -1,4 +1,13 @@
+# Python
 venv/
 __pycache__/
-.env
 *.pyc
+.env
+
+# ML artifacts
+checkpoints/
+*.bin
+*.safetensors
+
+# OS
+.DS_Store
