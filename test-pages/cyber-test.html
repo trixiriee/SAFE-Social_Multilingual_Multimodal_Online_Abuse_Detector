@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cyberbullying Filter Test Page</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        background: #f3f4f6;
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .feed {
+        max-width: 760px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .card {
+        background: white;
+        padding: 14px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 20, 0.08);
+      }
+
+      .user {
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #111827;
+      }
+
+      .text {
+        margin: 6px 0 12px 0;
+        font-size: 15px;
+        line-height: 1.4;
+        color: #1f2937;
+      }
+
+      img {
+        max-width: 100%;
+        border-radius: 10px;
+        margin-top: 10px;
+      }
+
+      .caption {
+        font-size: 13px;
+        margin-top: 6px;
+        color: #374151;
+      }
+
+      .divider {
+        height: 1px;
+        background: #e5e7eb;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Cyberbullying Filter – Test Feed</h1>
+
+    <div class="feed">
+
+      <!-- Normal / harmless -->
+      <div class="card">
+        <div class="user">@sunshine_girl</div>
+        <div class="text">
+          Had such a peaceful morning walk today 😊 The weather was perfect!
+        </div>
+      </div>
+
+      <!-- Soft rude (highlight) -->
+      <div class="card">
+        <div class="user">@coffee_lover</div>
+        <div class="text">
+          Ugh, this place is so annoying sometimes. I really hate the noise here.
+        </div>
+      </div>
+
+      <!-- Medium insults (blur) -->
+      <div class="card">
+        <div class="user">@randomDude</div>
+        <div class="text">
+          Stop acting stupid bro. You look like a total idiot in that last story.
+        </div>
+      </div>
+
+      <!-- Strong / abusive (block) -->
+      <div class="card">
+        <div class="user">@angry_user123</div>
+        <div class="text">
+          Go die already. Nobody wants you here, you worthless piece of trash.
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Clean image -->
+      <div class="card">
+        <div class="user">@artlover</div>
+        <img src="https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg" alt="beautiful mountain landscape" />
+        <div class="caption">Beautiful sunset over the mountains 🌄</div>
+      </div>
+
+      <!-- Image with rude caption (blur) -->
+      <div class="card">
+        <div class="user">@memesdaily</div>
+        <img
+          src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg"
+          alt="stupid meme idiot"
+        />
+        <div class="caption">
+          When your friend says something dumb again 😭 "you idiot"
+        </div>
+      </div>
+
+      <!-- Image with severe abusive caption (block) -->
+      <div class="card">
+        <div class="user">@darkmemes</div>
+        <img
+          src="https://images.pexels.com/photos/1357551/pexels-photo-1357551.jpeg"
+          alt="kill yourself meme"
+        />
+        <div class="caption">
+          This meme goes too far — "kill yourself"
+        </div>
+      </div>
+
+      <!-- Soft hostile image -->
+      <div class="card">
+        <div class="user">@phototalk</div>
+        <img
+          src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg"
+          alt="annoying expression"
+        />
+        <div class="caption">
+          His face when something annoying happens 😅
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>

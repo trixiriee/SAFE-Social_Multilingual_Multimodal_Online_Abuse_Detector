@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemeStream | v2.0</title>
+    
+    <link rel="stylesheet" href="assets/css/1-base.css">
+    <link rel="stylesheet" href="assets/css/2-layout.css">
+    <link rel="stylesheet" href="assets/css/3-feed.css">
+    <link rel="stylesheet" href="assets/css/4-modals.css">
+    <link rel="stylesheet" href="assets/css/5-discussion.css"> 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="glass-navbar">
+        <div class="logo-area">
+            <i class="fa-solid fa-bolt accent-icon"></i> 
+            <span>MemeStream</span>
+        </div>
+        <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search memes, users, or topics...">
+        </div>
+        <div class="user-profile-nav">
+            <button class="icon-btn"><i class="fa-solid fa-bell"></i><span class="dot"></span></button>
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=You" class="nav-avatar">
+        </div>
+    </nav>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <ul class="nav-links">
+                <li class="active" id="nav-home"><a href="#"><i class="fa-solid fa-house"></i> <span>Meme Feed</span></a></li>
+                <li id="nav-discuss"><a href="#"><i class="fa-solid fa-comments"></i> <span>Discussions</span></a></li>
+                <li><a href="#"><i class="fa-solid fa-fire"></i> <span>Trending</span></a></li>
+                <li id="theme-toggle-li"><a href="#"><i class="fa-solid fa-palette"></i> <span>Switch Theme</span></a></li>
+                <li class="bottom-link"><a href="#"><i class="fa-solid fa-gear"></i> <span>Settings</span></a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            
+            <div id="view-feed">
+                <div class="stories-wrapper">
+                    <div id="stories-container">
+                        </div>
+                </div>
+
+                <div id="meme-feed" class="scroll-area">
+                    </div>
+            </div>
+
+            <div id="view-discussion" class="hidden">
+                <header class="discussion-header">
+                    <h2><i class="fa-solid fa-hashtag"></i> The Forum</h2>
+                    <button class="new-topic-btn">New Topic</button>
+                </header>
+                <div class="discussion-filters">
+                    <span class="active">Hot</span>
+                    <span>New</span>
+                    <span>Tech</span>
+                    <span>Gaming</span>
+                </div>
+                <div id="discussion-feed">
+                    </div>
+            </div>
+
+        </main>
+        
+        <aside class="right-panel">
+            <div class="panel-box">
+                <h3>Trending Tags</h3>
+                <div class="tags"><span class="tag">#Cyberpunk</span><span class="tag">#AI</span><span class="tag">#Fail</span></div>
+            </div>
+            <div class="panel-box">
+                <h3>Who to follow</h3>
+                <div class="suggested-user">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Elon">
+                    <div><b>Musk_Clone</b><br><small>@mars_fan</small></div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <div id="comment-overlay" class="overlay hidden">
+        <div class="glass-modal">
+            <header class="modal-header"><h3>Comments <span id="modal-comment-count"></span></h3><button id="close-modal-btn"><i class="fa-solid fa-xmark"></i></button></header>
+            <div id="comments-list" class="comments-scroll-area"></div>
+            <div class="comment-input-wrapper">
+                <input type="text" id="new-comment-input" placeholder="Type a comment...">
+                <button id="send-comment-btn"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <button id="fab-create" class="fab-btn"><i class="fa-solid fa-plus"></i></button>
+    <div id="toast-container"></div>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+/* --- Stories Bar --- */
+.stories-wrapper {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--glass-border);
+    overflow-x: auto;
+}
+#stories-container { display: flex; gap: 15px; }
+.story-item { text-align: center; cursor: pointer; width: 70px; flex-shrink: 0; }
+.story-ring {
+    width: 65px; height: 65px; border-radius: 50%; padding: 3px;
+    background: linear-gradient(45deg, var(--accent-color), var(--accent-secondary));
+    position: relative;
+    transition: transform 0.3s;
+}
+.story-ring:hover { transform: rotate(5deg) scale(1.05); }
+.story-ring img { width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--bg-dark); object-fit: cover; }
+.story-user { font-size: 11px; margin-top: 5px; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* --- Discussion Forum Styles --- */
+.discussion-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
+}
+.new-topic-btn { background: var(--accent-color); border: none; padding: 8px 16px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+
+.discussion-filters { display: flex; gap: 15px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--glass-border); }
+.discussion-filters span { cursor: pointer; color: var(--text-muted); font-weight: bold; }
+.discussion-filters span.active { color: var(--accent-color); border-bottom: 2px solid var(--accent-color); padding-bottom: 5px; }
+
+.discussion-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    border-left: 3px solid var(--accent-secondary);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.discussion-card:hover { background: rgba(255, 255, 255, 0.05); transform: translateX(5px); }
+.discuss-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 5px; }
+.discuss-title { font-size: 18px; font-weight: bold; color: var(--text-main); margin-bottom: 10px; }
+.discuss-snippet { font-size: 14px; color: #ccc; margin-bottom: 15px; line-height: 1.4; }
+.discuss-footer { display: flex; gap: 15px; font-size: 13px; color: var(--text-muted); }
+.discuss-footer i { color: var(--accent-color); }

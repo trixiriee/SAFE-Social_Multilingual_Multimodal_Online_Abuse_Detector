@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cyberbullying Filter</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Cyberbullying Filter</h2>
+    <p class="subtitle">
+      Live demo using a local ML backend
+    </p>
+
+    <button id="scanBtn">Scan This Page</button>
+    <button id="resetBtn">Reset</button>
+
+    <div class="legend">
+      <div><span class="box block"></span> Blocked</div>
+      <div><span class="box blur"></span> Blurred</div>
+      <div><span class="box warn"></span> Highlighted</div>
+    </div>
+
+    <p class="note">
+      Content is analyzed in real time using a trained multilingual NLP model.
+    </p>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

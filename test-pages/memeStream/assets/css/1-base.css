@@ -1,0 +1,27 @@
+:root {
+    --bg-dark: #0f0f13;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --accent-color: #00f2ff;
+    --accent-secondary: #7000ff;
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    --font-main: 'Segoe UI', sans-serif;
+    --card-radius: 20px;
+}
+
+body.matrix-mode {
+    --bg-dark: #000000;
+    --glass-bg: rgba(0, 50, 0, 0.2);
+    --glass-border: rgba(0, 255, 0, 0.3);
+    --accent-color: #00ff00;
+    --text-main: #00ff41;
+    --text-muted: #008f11;
+    font-family: 'Courier New', monospace;
+    background-image: linear-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-main); height: 100vh; overflow: hidden; }

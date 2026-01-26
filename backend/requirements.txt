@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pydantic
+torch
+transformers
+numpy
+Pillow
+requests
+easyocr
+opencv-python
