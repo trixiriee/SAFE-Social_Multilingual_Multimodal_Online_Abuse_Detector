@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Feed Demo</title>
+  <style>
+    /* 1. CSS Variables for consistent theming */
+    :root {
+      --bg-color: #eef0f2;
+      --card-bg: #ffffff;
+      --text-main: #0f1419;
+      --text-muted: #536471;
+      --border-color: #eff3f4;
+      --hover-bg: #f7f9f9;
+      --accent-blue: #1d9bf0;
+      --accent-red: #f91880;
+    }
+
+    /* 2. Reset & Base Typography */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding: 20px 0; /* Space at top/bottom for desktop */
+    }
+
+    /* 3. Feed Container - Added Shadows & Borders */
+    .feed-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      min-height: 100vh;
+      border-radius: 16px; /* Soft edges */
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Lifts the feed off the background */
+      overflow: hidden; /* Keeps header inside the rounded corners */
+      border: 1px solid var(--border-color);
+    }
+
+    /* 4. Glassmorphism Header */
+    .header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px); /* Blurred background behind header */
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 1.25rem;
+      font-weight: 800;
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    /* 5. Post Layout & Interactivity */
+    .post {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      gap: 16px;
+      transition: background-color 0.2s ease;
+      cursor: pointer;
+    }
+    .post:hover {
+      background-color: var(--hover-bg); /* Interactive feedback */
+    }
+    
+    /* 6. Avatars - Added Gradients */
+    .avatar {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #e4e6eb, #d1d5db);
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .post-content {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .post-meta {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 2px;
+      align-items: baseline;
+    }
+    
+    .username { font-weight: 700; font-size: 0.95rem; }
+    .username:hover { text-decoration: underline; }
+    
+    .handle { color: var(--text-muted); font-size: 0.9rem; }
+    .post-text { font-size: 0.95rem; word-wrap: break-word; color: var(--text-main); margin-top: 4px; }
+    
+    /* 7. Image Styling */
+    .post-image {
+      max-width: 100%;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      margin-top: 12px;
+      object-fit: cover;
+    }
+
+    /* 8. NEW: Engagement Action Bar */
+    .post-actions {
+      display: flex;
+      justify-content: space-between;
+      max-width: 400px;
+      margin-top: 12px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .action-icon {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s ease;
+    }
+    .action-icon:hover { color: var(--accent-blue); }
+    .action-icon.like:hover { color: var(--accent-red); }
+
+  </style>
+</head>
+<body>
+
+  <div class="feed-container">
+    <div class="header">Live Feed</div>
+
+  <div class="post"><div class="avatar">E</div><div class="post-content"><div class="post-meta"><span class="username">Expanded</span><span class="handle">@data_1</span></div><div class="post-text">you are stupid</div></div></div>
+    <div class="post"><div class="avatar">E</div><div class="post-content"><div class="post-meta"><span class="username">Expanded</span><span class="handle">@data_2</span></div><div class="post-text">go die</div></div></div>
+    <div class="post"><div class="avatar">E</div><div class="post-content"><div class="post-meta"><span class="username">Expanded</span><span class="handle">@data_3</span></div><div class="post-text">have a nice day</div></div></div>
+    <div class="post"><div class="avatar">E</div><div class="post-content"><div class="post-meta"><span class="username">Expanded</span><span class="handle">@data_4</span></div><div class="post-text">you mother fucker</div></div></div>
+    <div class="post"><div class="avatar">E</div><div class="post-content"><div class="post-meta"><span class="username">Expanded</span><span class="handle">@data_5</span></div><div class="post-text">hello</div></div></div>
+    <div class="post"><div class="avatar">E</div><div class="post-content"><div class="post-meta"><span class="username">Expanded</span><span class="handle">@data_6</span></div><div class="post-text">मुझे तुमसे नफरत है</div></div></div>
+    <div class="post"><div class="avatar">E</div><div class="post-content"><div class="post-meta"><span class="username">Expanded</span><span class="handle">@data_7</span></div><div class="post-text">शुभ प्रभात</div></div></div>
+    <div class="post"><div class="avatar">E</div><div class="post-content"><div class="post-meta"><span class="username">Expanded</span><span class="handle">@data_8</span></div><div class="post-text">chup ho jao</div></div></div>
+    <div class="post"><div class="avatar">E</div><div class="post-content"><div class="post-meta"><span class="username">Expanded</span><span class="handle">@data_9</span></div><div class="post-text">aap bahut acche ho</div></div></div>
+    <div class="post"><div class="avatar">E</div><div class="post-content"><div class="post-meta"><span class="username">Expanded</span><span class="handle">@data_10</span></div><div class="post-text">உன்னை வெறுக்கிறேன்</div></div></div>
+    <div class="post"><div class="avatar">E</div><div class="post-content"><div class="post-meta"><span class="username">Expanded</span><span class="handle">@data_11</span></div><div class="post-text">இந்த பதிவு மிகவும் நல்லது</div></div></div>
+    <div class="post"><div class="avatar">E</div><div class="post-content"><div class="post-meta"><span class="username">Expanded</span><span class="handle">@data_12</span></div><div class="post-text">unna verukiren</div></div></div>
+    <div class="post"><div class="avatar">E</div><div class="post-content"><div class="post-meta"><span class="username">Expanded</span><span class="handle">@data_13</span></div><div class="post-text">indha post romba nalla irukku</div></div></div>
+    <div class="post"><div class="avatar">E</div><div class="post-content"><div class="post-meta"><span class="username">Expanded</span><span class="handle">@data_14</span></div><div class="post-text">నిన్ను నాకు అసహ్యం</div></div></div>
+    <div class="post"><div class="avatar">E</div><div class="post-content"><div class="post-meta"><span class="username">Expanded</span><span class="handle">@data_15</span></div><div class="post-text">మీ సహాయం చాలా బాగుంది</div></div></div>
+    <div class="post"><div class="avatar">E</div><div class="post-content"><div class="post-meta"><span class="username">Expanded</span><span class="handle">@data_16</span></div><div class="post-text">nee entha waste fellow</div></div></div>
+    <div class="post"><div class="avatar">E</div><div class="post-content"><div class="post-meta"><span class="username">Expanded</span><span class="handle">@data_17</span></div><div class="post-text">ela vunnav</div></div></div>
+    <div class="post">
+      <div class="avatar">IMG</div>
+      <div class="post-content">
+        <div class="post-meta"><span class="username">PhotoUser</span><span class="handle">@photo_1</span></div>
+        <div class="post-text">Normal Image</div>
+        <img src="http://localhost:8000/static/images.jpg" class="post-image" alt="Normal Image">
+        <div class="post-actions"><div class="action-icon">💬 14</div><div class="action-icon">🔁 2</div><div class="action-icon like">❤️ 56</div></div>
+      </div>
+    </div>
+    <div class="post">
+      <div class="avatar">IMG</div>
+      <div class="post-content">
+        <div class="post-meta"><span class="username">PhotoUser</span><span class="handle">@photo_2</span></div>
+        <div class="post-text">Abusive Meme (Hindi/Tamil)</div>
+        <img src="http://localhost:8000/static/abusive_meme.jpg" class="post-image" alt="Meme 1">
+        <div class="post-actions"><div class="action-icon">💬 89</div><div class="action-icon">🔁 34</div><div class="action-icon like">❤️ 210</div></div>
+      </div>
+    </div>
+    <div class="post">
+      <div class="avatar">IMG</div>
+      <div class="post-content">
+        <div class="post-meta"><span class="username">PhotoUser</span><span class="handle">@photo_3</span></div>
+        <div class="post-text">Abusive Meme (Hindi/Tamil)</div>
+        <img src="http://localhost:8000/static/abusive_meme1.jpg" class="post-image" alt="Meme 2">
+        <div class="post-actions"><div class="action-icon">💬 45</div><div class="action-icon">🔁 12</div><div class="action-icon like">❤️ 134</div></div>
+      </div>
+    </div>
+    <div class="post">
+      <div class="avatar">IMG</div>
+      <div class="post-content">
+        <div class="post-meta"><span class="username">PhotoUser</span><span class="handle">@photo_4</span></div>
+        <div class="post-text">Mob</div>
+        <img src="http://localhost:8000/static/mob.jpg" class="post-image" alt="Mob">
+        <div class="post-actions"><div class="action-icon">💬 112</div><div class="action-icon">🔁 56</div><div class="action-icon like">❤️ 389</div></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

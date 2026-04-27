@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from typing import Dict
+from contextlib import asynccontextmanager
 
 from backend.config import (
     TEXT_MODEL_NAME,
@@ -12,7 +13,25 @@ from backend.config import (
 from backend.models.text_model import TextAggressionModel
 from backend.models.image_clip import predict_image_abuse
 
-app = FastAPI(title="Cyberbullying Detection API")
+# ---------- GLOBALS ----------
+text_model = None
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Runs BEFORE the server starts accepting requests
+    global text_model
+    print("Loading text model...")
+    try:
+        text_model = TextAggressionModel(TEXT_MODEL_NAME)
+        print("Text model loaded successfully.")
+    except Exception as e:
+        print(f"ERROR loading text model: {e}")
+        raise  # This will show you the real error
+    yield
+    # Runs on shutdown (cleanup if needed)
+    print("Shutting down...")
+
+app = FastAPI(title="Cyberbullying Detection API", lifespan=lifespan)
 
 # ---------- CORS ----------
 app.add_middleware(
@@ -25,9 +44,6 @@ app.add_middleware(
 
 # ---------- STATIC FILES ----------
 app.mount("/static", StaticFiles(directory="backend/static"), name="static")
-
-# ---------- MODELS ----------
-text_model = TextAggressionModel(TEXT_MODEL_NAME)
 
 # ---------- UTILS ----------
 def map_score_to_action(score: float) -> str:
@@ -44,7 +60,6 @@ def map_score_to_action(score: float) -> str:
 def analyze_page(payload: Dict):
     decisions = []
 
-    # -------- TEXT MODERATION --------
     messages = payload.get("messages", [])
     texts = [m["text"] for m in messages if "text" in m]
 
@@ -58,20 +73,20 @@ def analyze_page(payload: Dict):
                 "action": map_score_to_action(score)
             })
 
-    # -------- IMAGE MODERATION (CLIP) --------
     images = payload.get("images", [])
-
     for img in images:
-        score = predict_image_abuse(img["src"])
-        action = map_score_to_action(score)
-
-        decisions.append({
-            "id": img["id"],
-            "item_type": "image",
-            "score": score,
-            "action": action,
-            "badge": "🚫 Abusive Meme" if action != "none" else ""
-        })
+        try:
+            score = predict_image_abuse(img["src"])
+            action = map_score_to_action(score)
+            decisions.append({
+                "id": img["id"],
+                "item_type": "image",
+                "score": score,
+                "action": action,
+                "badge": "🚫 Abusive Meme" if action != "none" else ""
+            })
+        except Exception as e:
+            print(f"Image error: {e}")
 
     return {"decisions": decisions}
 
