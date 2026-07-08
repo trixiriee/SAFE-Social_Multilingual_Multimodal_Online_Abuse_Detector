@@ -28,7 +28,7 @@ the architechture is the combination of text and image level models
                           |
      the backend gives response such as offensive or not
                           |
- based on the response the content is managed such flagging/blocking/blurring
+    based on the response the content is managed such flagging/blocking/blurring
              (according to the user preferences)
              
 
