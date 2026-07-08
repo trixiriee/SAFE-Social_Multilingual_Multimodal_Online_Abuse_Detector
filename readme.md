@@ -14,9 +14,21 @@ code-mixed text and images using NLP and OCR-based analysis.
 Python, Deep Learning, NLP, OCR (Tesseract/EasyOCR), Flask/FastAPI
 
 ## Architecture
-(brief explanation)
+the architechture is the combination of text and image level models 
+-- the comments are handled by BERT model 
+-- the text inside meme images is scanned using OCR and then passed down to BERT
 
-## How to Run
-1. Clone repo
-2. Install requirements
-3. Run backend
+                  webpage is scanned 
+                          |
+         the comments/images are extracted from the DOM
+                          |
+            comments are passsed down to BERT 
+                          |
+            images are passed down to the OCR
+                          |
+     the backend gives response such as offensive or not
+                          |
+ based on the response the content is managed such flagging/blocking/blurring
+             (according to the user preferences)
+             
+
